@@ -1,6 +1,14 @@
 fastapi
 uvicorn
 pydantic
+python-dotenv
 google-genai
 pandas
 supabase
+python-multipart
+openpyxl
+python-docx
+mammoth
+olefile
+pdfplumber
+openpyxl
