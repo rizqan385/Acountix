@@ -561,12 +561,13 @@
 .jurnal-table-wrapper {
   margin-top: 12px;
   border-radius: 12px;
-  overflow: hidden;
+  overflow-x: auto;
   border: 1px solid rgba(236, 72, 153, 0.12);
 }
 
 .jurnal-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   font-size: 13px;
 }
@@ -757,11 +758,16 @@
 }
 
 /* ===== RESPONSIVE ===== */
+.sidebar-overlay {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
     left: 0;
     top: 0;
+    height: 100vh;
     z-index: 50;
     box-shadow: 4px 0 30px rgba(0,0,0,0.5);
   }
@@ -769,6 +775,24 @@
   .sidebar-collapsed {
     transform: translateX(-100%);
     width: 280px;
+    box-shadow: none;
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 6, 18, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .sidebar-overlay-visible {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .chat-empty-hints {
@@ -778,6 +802,25 @@
 
   .chat-hint-card {
     max-width: 100%;
+  }
+
+  .chat-message {
+    max-width: 100%;
+  }
+
+  .chat-bubble {
+    max-width: 85vw;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  
+  .input-bar-wrapper {
+    padding: 10px 16px 16px;
+  }
+  
+  .welcome-card {
+    margin: 20px;
+    padding: 32px 24px;
   }
 }
 

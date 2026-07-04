@@ -219,7 +219,9 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     return !!localStorage.getItem(STORAGE_KEYS.USER_NAME);
   });
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(() => {
+    return window.innerWidth > 768;
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   // Chat state
@@ -257,6 +259,9 @@ function App() {
   const handleNewChat = () => {
     setActiveChatId(null);
     setMessages([]);
+    if (window.innerWidth <= 768) {
+      setSidebarOpen(false);
+    }
   };
 
   const handleSelectChat = (chatId) => {
@@ -264,6 +269,9 @@ function App() {
     if (chat) {
       setActiveChatId(chat.id);
       setMessages(chat.messages || []);
+      if (window.innerWidth <= 768) {
+        setSidebarOpen(false);
+      }
     }
   };
 
@@ -513,6 +521,12 @@ function App() {
         onSelectChat={handleSelectChat}
         onDeleteChat={handleDeleteChat}
         onToggle={() => setSidebarOpen((prev) => !prev)}
+      />
+
+      {/* Mobile Sidebar Overlay */}
+      <div 
+        className={`sidebar-overlay ${sidebarOpen ? 'sidebar-overlay-visible' : ''}`}
+        onClick={() => setSidebarOpen(false)}
       />
 
       {/* Main Content */}
