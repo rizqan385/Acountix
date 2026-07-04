@@ -478,6 +478,12 @@
   align-self: flex-start;
 }
 
+.chat-message-content {
+  min-width: 0;
+  flex: 1;
+  max-width: 100%;
+}
+
 .chat-avatar {
   width: 34px;
   height: 34px;
@@ -806,16 +812,35 @@
 
   .chat-message {
     max-width: 100%;
+    width: 100%;
+  }
+
+  .chat-message-content {
+    width: calc(100vw - 90px);
   }
 
   .chat-bubble {
-    max-width: 85vw;
+    max-width: 100%;
     padding: 12px 14px;
     font-size: 13px;
   }
   
+  .jurnal-table {
+    min-width: 450px;
+    font-size: 12px;
+  }
+  
+  .jurnal-table th, .jurnal-table td {
+    padding: 8px 10px;
+  }
+  
   .input-bar-wrapper {
-    padding: 10px 16px 16px;
+    padding: 10px;
+  }
+  
+  .input-bar {
+    padding: 8px 10px;
+    gap: 8px;
   }
   
   .welcome-card {

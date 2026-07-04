@@ -168,7 +168,7 @@ function ChatMessage({ message, userName }) {
       <div className={`chat-avatar ${isUser ? 'chat-avatar-user' : 'chat-avatar-ai'}`}>
         {isUser ? getInitials(userName) : '🤖'}
       </div>
-      <div>
+      <div className="chat-message-content">
         {/* File tag for user messages with files */}
         {isUser && message.fileName && (
           <div className="chat-file-tag">
